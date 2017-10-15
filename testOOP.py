@@ -1,10 +1,10 @@
-# -*- coding: utf-8 -*-
-from tkinter import *
+# -*- coding: utf-8 -*
+import tkinter as tk
 
-class Application (Frame):
+class Application (tk.Frame):
     def __init__(self,master):
         """Initializes the frame"""
-        Frame.__init__(self,master)
+        tk.Frame.__init__(self,master)
         self.buttonClicks = 0
         self.create_widgets()
         self.grid()
@@ -12,41 +12,43 @@ class Application (Frame):
         
     def create_widgets(self):
         """Create button that counts number of clicks"""
-        self.label = Label(self, text= "this is a lable" + str(self.buttonClicks))
-        self.label.grid(row=0,sticky=W,padx=10,pady=20)
+        self.label = tk.Label(self, text= "this is a lable " + str(self.buttonClicks))
+        self.label.grid(columnspan=20,row=0,sticky=tk.W,padx=10,pady=20)
         
-        self.entrs = Entry(self,width=10)
-        self.entrs.grid(row = 1,column = 0, padx = 20, sticky = W)
+        self.entrs = tk.Entry(self,width=10)
+        self.entrs.grid(row = 1,column = 0, padx = 20, sticky = tk.W)
         
-        self.button1 = Button(self,text="total clicks " + str(self.buttonClicks))
+        self.button1 = tk.Button(self,text="total clicks " + str(self.buttonClicks))
         self.button1.bind("<Button-1>",self.update_count)
-        self.button1.grid(column = 0,row = 2,sticky = W)
+        self.button1.grid(column = 0,row = 2,sticky = tk.W)
         
-        self.radio1 = Radiobutton(self,text="Good",value=1)
-        self.radio1.grid(column = 0,row = 3, sticky = W)
-        self.radio2 = Radiobutton(self,text="Medium",value=2)
-        self.radio2.grid(column = 1,row = 3, sticky = W)
-        self.radio3 = Radiobutton(self,text="Bad",value=3)
-        self.radio3.grid(column = 2,row = 3, sticky = W)
+        self.radio1 = tk.Radiobutton(self,text="Good",value=1)
+        self.radio1.grid(column = 0,row = 3, sticky = tk.W)
+        self.radio2 = tk.Radiobutton(self,text="Medium",value=2)
+        self.radio2.grid(column = 1,row = 3, sticky = tk.W)
+        self.radio3 = tk.Radiobutton(self,text="Bad",value=3)
+        self.radio3.grid(column = 2,row = 3, sticky = tk.W)
         
-        self.addLabel = Label(self,text="Summ the numbers entered in the below entries")
-        self.addLabel.grid(columnspan=1,row=4,column=0)
+        self.addLabel = tk.Label(self,text="Summ the numbers entered in the below entries")
+        self.addLabel.grid(columnspan=20,row=4,column=0)
         
-        self.firstNum = Entry(self,width=5)
-        self.firstNum.grid(row=5,column=0)
+        self.firstNum = tk.Entry(self)
+        self.firstNum.grid(row=5,column=0,sticky=tk.W)
         
-        self.plusLabel = Label(text="+")
+        self.plusLabel = tk.Label(self,text="+")
         self.plusLabel.grid(row=5,column=1)
         
-        self.secondNum=Entry(self,width=5)
-        self.secondNum.grid(row=5,column=2)
+        self.secondNum=tk.Entry(self)
+        self.secondNum.grid(row=5,column=2,sticky=tk.W)
         
-        self.equalButton = Button(text="=")
+        self.equalButton = tk.Button(self,text="=")
         self.equalButton.bind("<Button-1>",self.summ)
-        self.equalButton.grid(row=5,column=3)
+        self.equalButton.grid(row=5,column=3,sticky=tk.W)
         
-        self.summLabel = Label(self,text="summ")
-        self.summLabel.grid(row=5,column=4)
+        self.summLabel = tk.Label(self,text="summ")
+        self.summLabel.grid(row=5,column=4,sticky=tk.W)
+        
+        
         
         
         
@@ -68,7 +70,7 @@ class Application (Frame):
         
         
         
-root = Tk()
+root = tk.Tk()
 root.title("OOP gui test")
 root.geometry("500x600")
 app = Application(root)
